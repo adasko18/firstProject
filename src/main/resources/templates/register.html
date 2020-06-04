@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<form method="POST" th:object="${register}">
+    <p>
+        <label for='firstName' id="f1">Enter Name: </label><br/>
+        <input class="form-input" type="text" name="name">
+    </p>
+    <p>
+        <label for='email' id="f2">Enter Email Address: </label><br/>
+        <input class="form-input" type="text" name="email">
+    </p>
+    <p>
+        <label for='message' id="f3">Enter Text: </label><br/>
+        <textarea rows="4" cols="50" class="form-input" type="text" name="textarea"></textarea>
+    </p>
+    <p>
+        <input class="form-input" type="submit">
+    </p>
+</form>
+</body>
+</html>
