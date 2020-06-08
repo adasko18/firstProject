@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 public class Login {
 
     @NotBlank(message = "User name is required!")
-    private String user;
+    private String email;
     @NotBlank(message = "Password is required!")
     private String password;
 }

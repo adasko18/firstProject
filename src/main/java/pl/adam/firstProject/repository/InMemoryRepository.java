@@ -5,6 +5,7 @@ import pl.adam.firstProject.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class InMemoryRepository implements UserRepository {
@@ -20,5 +21,13 @@ public class InMemoryRepository implements UserRepository {
     @Override
     public boolean hasEmail(String email) {
         return users.containsKey(email);
+    }
+
+    @Override
+    public Optional<User> getBy(String email) {
+        if(users.containsKey(email)) {
+            return Optional.of(users.get(email));
+        }
+        return Optional.empty();
     }
 }

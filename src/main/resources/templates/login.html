@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
-
+<form method="POST" th:object="${login}">
+    <p>
+        <label>Enter Email Address: </label><br/>
+        <input class="form-input" type="email" name="email">
+        <span th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}">
+        Customer data error</span>
+    </p>
+    <p>
+        <label>Enter password: </label><br/>
+        <input class="form-input" type="password" name="password">
+        <span th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">
+        Customer data error</span>
+    </p>
+    <p>
+        <input class="form-input" type="submit">
+    </p>
+</form>
 </body>
 </html>
