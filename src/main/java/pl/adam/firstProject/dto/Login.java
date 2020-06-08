@@ -1,4 +1,4 @@
-package pl.adam.firstProject;
+package pl.adam.firstProject.dto;
 
 import lombok.Data;
 
