@@ -5,10 +5,11 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class Login {
+public class RegisterRequest {
 
-    @NotBlank(message = "User name is required!")
+    @NotBlank(message = "User name or Password is required!")
     private String email;
-    @NotBlank(message = "Password is required!")
+    @NotBlank(message = "User name or Password is required!")
     private String password;
+
 }

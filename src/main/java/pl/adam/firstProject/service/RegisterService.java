@@ -1,9 +1,11 @@
 package pl.adam.firstProject.service;
 
 import org.springframework.stereotype.Service;
-import pl.adam.firstProject.dto.Register;
+import pl.adam.firstProject.dto.RegisterRequest;
 import pl.adam.firstProject.model.User;
 import pl.adam.firstProject.repository.UserRepository;
+
+import javax.annotation.PostConstruct;
 
 @Service
 public class RegisterService {
@@ -14,9 +16,15 @@ public class RegisterService {
         this.userRepository = userRepository;
     }
 
-    public void addUser(Register register) {
-        validateUnique(register.getEmail());
-        User user = new User(register.getEmail(),register.getPassword());
+    @PostConstruct
+    private void addTestUser() {
+        User user = new User("trainer11@gmail.com","123");
+        userRepository.save(user);
+    }
+
+    public void addUser(RegisterRequest registerRequest) {
+        validateUnique(registerRequest.getEmail());
+        User user = new User(registerRequest.getEmail(), registerRequest.getPassword());
         userRepository.save(user);
     }
 

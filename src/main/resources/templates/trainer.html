@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" th:object="${trainer}">
+    <p>
+        <label>Enter your nick: </label><br/>
+        <input class="form-input" type="text" name="nick">
+        <span th:if="${#fields.hasErrors('nick')}"
+              th:errors="*{nick}">
+        Customer data error</span>
+    </p>
+    <p>
+        <label>Enter your age: </label><br/>
+        <input class="form-input" type="text" name="age">
+        <span th:if="${#fields.hasErrors('age')}"
+              th:errors="*{age}">
+        Customer data error</span>
+    </p>
+    <p>
+        <label>Enter your gender: </label><br/>
+        <input class="form-input" type="text" name="gender">
+        <span th:if="${#fields.hasErrors('gender')}"
+              th:errors="*{gender}">
+        Customer data error</span>
+    </p>
+    <p>
+        <label>Enter your favourite pokemon: </label><br/>
+        <input class="form-input" type="text" name="favPokemon">
+        <span th:if="${#fields.hasErrors('favPokemon')}"
+              th:errors="*{favPokemon}">
+        Customer data error</span>
+    </p>
+    <p>
+        <input class="form-input" type="submit">
+    </p>
+</form>
+</body>
+</html>

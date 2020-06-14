@@ -3,12 +3,12 @@ package pl.adam.firstProject.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.adam.firstProject.dto.Register;
+import pl.adam.firstProject.dto.RegisterRequest;
 import pl.adam.firstProject.service.RegisterService;
 import pl.adam.firstProject.service.RegisterServiceException;
 
@@ -26,12 +26,12 @@ public class RegisterController {
 
     @GetMapping
     public String getRegisterPage(Model model) {
-        model.addAttribute("register",new Register());
+        model.addAttribute("register",new RegisterRequest());
         return "register";
     }
 
     @PostMapping
-    public String processRegister(@Valid Register register, BindingResult errors) {
+    public String processRegister(@Valid @ModelAttribute("register") RegisterRequest register, BindingResult errors) {
         System.out.println(register);
         if (errors.hasErrors()) {
             System.out.println("Są błędy");
