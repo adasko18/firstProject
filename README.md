@@ -10,6 +10,8 @@
 - Hibernate
 - H2
 - Maven
+- JUnit
+- Mockito
 
 ## Table of Contents
 
