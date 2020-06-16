@@ -25,7 +25,7 @@ class TrainerControllerTest {
     private TrainerService trainerService;
 
     @Test
-    void shouldSayStatusAndViewNameIsOk() throws Exception {
+    void shouldSayStatusAndViewNameIsOkWhenGetUrlTrainer() throws Exception {
         mockMvc.perform(get("/trainer"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("trainer"));

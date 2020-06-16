@@ -16,11 +16,11 @@ public class RegisterService {
         this.userRepository = userRepository;
     }
 
-    @PostConstruct
+/*    @PostConstruct
     private void addTestUser() {
         User user = new User("trainer11@gmail.com","123");
         userRepository.save(user);
-    }
+    }*/
 
     public void addUser(RegisterRequest registerRequest) {
         validateUnique(registerRequest.getEmail());

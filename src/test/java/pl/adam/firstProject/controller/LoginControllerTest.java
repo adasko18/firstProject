@@ -11,6 +11,7 @@ import pl.adam.firstProject.service.LoginService;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -24,10 +25,16 @@ class LoginControllerTest {
     private LoginService loginService;
 
     @Test
-    void shouldSayStatusAndViewNameIsOk() throws Exception {
+    void shouldSayStatusAndViewNameIsOkWhenGetUrlLogin() throws Exception {
         mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("login"));
+    }
+
+    @Test
+    void shouldSayStatusAndViewNameIsOkWhenPostUrlLogin() throws Exception {
+        mockMvc.perform(post("/login/post"))
+                .andExpect(status().isOk());
     }
 
 }
