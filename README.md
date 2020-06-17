@@ -1,4 +1,4 @@
-# firstProject
+# Pokemon Cards Web Service API
 > A web service that allows users to collect and share pokemon cards.
 
 **Status**
