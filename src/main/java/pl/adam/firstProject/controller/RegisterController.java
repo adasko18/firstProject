@@ -19,9 +19,11 @@ import javax.validation.Valid;
 public class RegisterController {
 
     private RegisterService registerService;
+    //private PasswordEncoder passwordEncoder;
 
     public RegisterController(RegisterService registerService) {
         this.registerService = registerService;
+        //this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping

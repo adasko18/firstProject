@@ -4,6 +4,10 @@ import pl.adam.firstProject.dto.TrainerRequest;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +20,8 @@ public class Trainer {
     private String age;
     private String gender;
     private String favPokemon;
+    @ManyToMany
+    private List<Card> deck = new ArrayList<>();
 
     private Trainer() {
     }
@@ -26,6 +32,22 @@ public class Trainer {
         age = trainerRequest.getAge();
         gender = trainerRequest.getGender();
         favPokemon = trainerRequest.getFavPokemon();
+    }
+
+    public Trainer(String email, String nick, String age, String gender, String favPokemon) {
+        this.email = email;
+        this.nick = nick;
+        this.age = age;
+        this.gender = gender;
+        this.favPokemon = favPokemon;
+    }
+
+    public List<Card> getDeck() {
+        return deck;
+    }
+
+    public void addCards(List<Card> cards) {
+        this.deck.addAll(cards);
     }
 
     public String getNick() {

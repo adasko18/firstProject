@@ -21,8 +21,9 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@ExtendWith(SpringExtension.class)
+//
 //@TestPropertySource(properties = "server.port=8080")
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class RegisterLoginAndCreateTrainerTest {
 
@@ -35,19 +36,21 @@ class RegisterLoginAndCreateTrainerTest {
     @LocalServerPort
     private static int port;
 
+    private static int testPort = 8080;
+
     private static HtmlUnitDriver browser;
 
-    private static final String HOME_PAGE_URL = "http://localhost:" + "8080" + "/";
-    private static final String REGISTRATION_PAGE_URL = "http://localhost:" + "8080" + "/register";
-    private static final String LOGIN_PAGE_URL = "http://localhost:" + "8080" + "/login";
-    private static final String TRAINER_PAGE_URL = "http://localhost:" + "8080" + "/trainer";
+    private static final String HOME_PAGE_URL = "http://localhost:" + testPort + "/";
+    private static final String REGISTRATION_PAGE_URL = "http://localhost:" + testPort + "/register";
+    private static final String LOGIN_PAGE_URL = "http://localhost:" + testPort + "/login";
+    private static final String TRAINER_PAGE_URL = "http://localhost:" + testPort + "/trainer";
 
 
     @BeforeAll
     public static void setup() {
         browser = new HtmlUnitDriver();
         browser.manage().timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
+                .implicitlyWait(100, TimeUnit.SECONDS);
     }
 
     @AfterAll

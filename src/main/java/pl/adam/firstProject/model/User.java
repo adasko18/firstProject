@@ -2,6 +2,8 @@ package pl.adam.firstProject.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +20,7 @@ public class User {
     public String getEmail() {
         return email;
     }
+
 
     public String getPassword() {
         return password;

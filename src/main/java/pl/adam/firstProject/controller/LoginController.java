@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.adam.firstProject.dto.LoginRequest;
 import pl.adam.firstProject.service.LoginService;
 import pl.adam.firstProject.service.LoginServiceException;
+import pl.adam.firstProject.service.TrainerService;
 
 import javax.validation.Valid;
 
@@ -19,9 +20,11 @@ import javax.validation.Valid;
 public class LoginController {
 
     private LoginService loginService;
+    private TrainerService trainerService;
 
-    public LoginController(LoginService loginService) {
+    public LoginController(LoginService loginService, TrainerService trainerService) {
         this.loginService = loginService;
+        this.trainerService = trainerService;
     }
 
     @GetMapping
@@ -43,7 +46,9 @@ public class LoginController {
             errors.addError(new FieldError("login",ex.getForField(),ex.getMessage()));
             return "login";
         }
-
+        if(trainerService.hasTrainer(loginService.getLoggedUser().getEmail())) {
+            return ("redirect:/booster");
+        }
 
         return ("redirect:/trainer");
     }
